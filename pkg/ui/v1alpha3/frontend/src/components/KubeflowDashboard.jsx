@@ -1,6 +1,6 @@
 import React from 'react';
 import { CHANGE_GLOBAL_NAMESPACE } from '../actions/generalActions';
-import generalReducer from '../reducers/general';
+import generalReducer from "../reducers/general";
 
 // TODO: Think about better way of update namespace
 // Right now, after updating namespace in select list
