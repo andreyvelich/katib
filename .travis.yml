@@ -1,6 +1,7 @@
 jobs:
   include:
-    - language: go
+    - name: "Go unit tests, gofmt, golint and coveralls"
+      language: go
       go: "1.12.5"
       go_import_path: github.com/kubeflow/katib
       install:
@@ -15,7 +16,8 @@ jobs:
         - make check
         - make test
         - goveralls -coverprofile=coverage.out
-    - language: node_js
+    - name: "Prettier frontend check"
+      language: node_js
       node_js: "10.13.0"
       install:
         - npm install --global prettier
