@@ -39,11 +39,11 @@ jobs:
           cd src/github.com/kubeflow/katib
           make deploy
           TIMEOUT=120
-          db_manager=$(kubectl get pods -n kubeflow | grep katib-db-manager | awk '{print $1}')
           PODNUM=$(kubectl get deploy -n kubeflow | grep -v NAME | wc -l)
           until kubectl get pods -n kubeflow | grep "1/1" | [[ $(wc -l) -eq $PODNUM ]]; do
             echo Pod Status $(kubectl get pods -n kubeflow | grep "1/1" | wc -l)/$PODNUM
-            kubectl logs $db_manager -n kubeflow
+            db_manager=$(kubectl get pods -n kubeflow | grep katib-db-manager | grep  | awk '{print $1}')
+            kubectl logs $db_manager -n kubeflow || echo "not ready"
             sleep 10
             TIMEOUT=$((TIMEOUT - 1))
             kubectl get pods -n kubeflow
