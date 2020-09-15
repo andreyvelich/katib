@@ -61,7 +61,7 @@ jobs:
           TIMEOUT=120
           until kubectl get experiment -n anonymous | grep Succeeded | [[ $(wc -l) -eq 1 ]]; do
             kubectl get experiment -n kubeflow
-            kubectl logs $contrgoller_pod -n kubeflow
+            kubectl logs $controller_pod -n kubeflow
             kubectl get pods -n kubeflow
             if [[ $TIMEOUT -eq 0 ]]; then
               echo "NG"
