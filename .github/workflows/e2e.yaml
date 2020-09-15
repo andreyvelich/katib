@@ -26,6 +26,7 @@ jobs:
 
       - name: deploy-katib
         run: |
+          cd src/github.com/kubeflow/katib
           make deploy
           TIMEOUT=120
           PODNUM=$(kubectl get deploy -n kubeflow | grep -v NAME | wc -l)
@@ -40,3 +41,7 @@ jobs:
             fi
           done
           kubectl get pods -n kubeflow
+      # - name: run-experiment
+      #   run: |
+      #     cd src/github.com/kubeflow/katib
+      #     go run test/e2e/v1beta1
