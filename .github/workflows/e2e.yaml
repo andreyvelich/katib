@@ -33,7 +33,7 @@ jobs:
           PODNUM=$(kubectl get deploy -n kubeflow | grep -v NAME | wc -l)
           until kubectl get pods -n kubeflow | grep Running | [[ $(wc -l) -eq $PODNUM ]]; do
             mysql_pod=$(kubectl get pods -n kubeflow | grep katib-mysql |  awk '{print $1}')
-            if [ ! -z "$mysql"]; then
+            if [ ! -z "$mysql_pod"]; then
               kubectl logs $mysql_pod -n kubeflow
             fi
             kubectl get pvc -n kubeflow
