@@ -34,6 +34,7 @@ jobs:
             echo Pod Status $(kubectl get pods -n kubeflow | grep "1/1" | wc -l)/$PODNUM
             sleep 10
             TIMEOUT=$((TIMEOUT - 1))
+            kubectl get pods -n kubeflow
             if [[ $TIMEOUT -eq 0 ]]; then
               echo "NG"
               kubectl get pods -n kubeflow
@@ -41,7 +42,8 @@ jobs:
             fi
           done
           kubectl get pods -n kubeflow
-      # - name: run-experiment
-      #   run: |
-      #     cd src/github.com/kubeflow/katib
-      #     go run test/e2e/v1beta1
+
+      - name: run-experiment
+        run: |
+          cd src/github.com/kubeflow/katib
+          go run test/e2e/v1beta1/run-e2e-experiment.go examples/v1beta1/random-example.yaml
