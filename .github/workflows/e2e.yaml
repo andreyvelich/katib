@@ -32,8 +32,8 @@ jobs:
           TIMEOUT=120
           PODNUM=$(kubectl get deploy -n kubeflow | grep -v NAME | wc -l)
           until kubectl get pods -n kubeflow | grep Running | [[ $(wc -l) -eq $PODNUM ]]; do
-            mysql_pod = $(kubectl get pods -n $NAMESPACE | grep katib-mysql |  awk '{print $1}')
-            kubectl logs $mysql -n kubeflow
+            mysql_pod=$(kubectl get pods -n $NAMESPACE | grep katib-mysql |  awk '{print $1}')
+            kubectl logs $mysql_pod -n kubeflow
             kubectl get pvc -n kubeflow
             kubectl describe pvc katib-mysql -n kubeflow
             echo Pod Status $(kubectl get pods -n kubeflow | grep "1/1" | wc -l)/$PODNUM
