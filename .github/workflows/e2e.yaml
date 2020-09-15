@@ -27,6 +27,7 @@ jobs:
       - name: deploy-katib
         run: |
           kubectl get storageclass
+          echo $HOME
           cd src/github.com/kubeflow/katib
           make deploy
           TIMEOUT=120
