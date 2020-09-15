@@ -17,8 +17,8 @@ spec:
     algorithmSettings:
       - name: "random_state"
         value: "10"
-  parallelTrialCount: 3
-  maxTrialCount: 12
+  parallelTrialCount: 2
+  maxTrialCount: 3
   maxFailedTrialCount: 3
   parameters:
     - name: lr
