@@ -59,7 +59,7 @@ jobs:
           kubectl create -f examples/v1beta1/bayesianoptimization-example.yaml
           kubectl create -f examples/v1beta1/cmaes-example.yaml
           kubectl create -f examples/v1beta1/grid-example.yaml
-          kubectl create -f examples/v1beta1/metrics-strategy-example.yaml
+          kubectl create -f examples/v1beta1/metric-strategy-example.yaml
           kubectl create -f examples/v1beta1/nas/darts-example-cpu.yaml
           kubectl create -f examples/v1beta1/resume-experiment/from-volume-resume.yaml
 
