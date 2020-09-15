@@ -58,7 +58,7 @@ spec:
                 command:
                   - "python3"
                   - "/opt/mxnet-mnist/mnist.py"
-                  - "--batch-size=64"
+                  - "--num-epochs=2"
                   - "--lr=${trialParameters.learningRate}"
                   - "--num-layers=${trialParameters.numberLayers}"
                   - "--optimizer=${trialParameters.optimizer}"

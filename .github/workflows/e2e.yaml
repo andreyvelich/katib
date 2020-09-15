@@ -41,10 +41,6 @@ jobs:
           PODNUM=$(kubectl get deploy -n kubeflow | grep -v NAME | wc -l)
           until kubectl get pods -n kubeflow | grep "1/1" | [[ $(wc -l) -eq $PODNUM ]]; do
             echo Pod Status $(kubectl get pods -n kubeflow | grep "1/1" | wc -l)/$PODNUM
-            db_manager=$(kubectl get pods -n kubeflow | grep katib-db-manager | awk '{print $1}')
-            kubectl logs $db_manager -n kubeflow || echo "db-manager not ready"
-            mysql=$(kubectl get pods -n kubeflow | grep katib-mysql | awk '{print $1}')
-            kubectl logs $mysql -n kubeflow || echo "mysql not ready"
             sleep 10
             TIMEOUT=$((TIMEOUT - 1))
             kubectl get pods -n kubeflow
@@ -60,6 +56,9 @@ jobs:
         run: |
           cd src/github.com/kubeflow/katib
           kubectl create -f examples/v1beta1/random-example.yaml
+          kubectl create -f examples/v1beta1/bayesianoptimization-example.yaml
+          kubectl create -f examples/v1beta1/cmaes-example.yaml
+          kubectl create -f examples/v1beta1/grid-example.yaml
           controller_pod=$(kubectl get pods -n kubeflow | grep katib-controller | awk '{print $1}')
           TIMEOUT=120
           until kubectl get experiment -n anonymous | grep Succeeded | [[ $(wc -l) -eq 1 ]]; do
