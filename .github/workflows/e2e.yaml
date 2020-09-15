@@ -26,8 +26,6 @@ jobs:
 
       - name: deploy-katib
         run: |
-          kubectl get storageclass
-          echo $HOME
           sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
           sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
           cd src/github.com/kubeflow/katib
@@ -35,12 +33,6 @@ jobs:
           TIMEOUT=120
           PODNUM=$(kubectl get deploy -n kubeflow | grep -v NAME | wc -l)
           until kubectl get pods -n kubeflow | grep Running | [[ $(wc -l) -eq $PODNUM ]]; do
-            mysql_pod=$(kubectl get pods -n kubeflow | grep katib-mysql | grep  CrashLoopBackOff | awk '{print $1}')
-            if [ ! -z "$mysql_pod" ]; then
-              kubectl logs $mysql_pod -n kubeflow
-            fi
-            mysql_pod=$(kubectl get pods -n kubeflow | grep katib-mysql | awk '{print $1}')
-            kubectl describe pod $mysql_pod -n kubeflow
             echo Pod Status $(kubectl get pods -n kubeflow | grep "1/1" | wc -l)/$PODNUM
             sleep 10
             TIMEOUT=$((TIMEOUT - 1))
@@ -55,5 +47,6 @@ jobs:
 
       - name: run-experiment
         run: |
+          GOPATH=$GOPATH:/src/github.com/kubeflow/katib
           cd src/github.com/kubeflow/katib
           go run test/e2e/v1beta1/run-e2e-experiment.go examples/v1beta1/random-example.yaml
