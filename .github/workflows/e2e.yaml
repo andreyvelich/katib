@@ -37,8 +37,8 @@ jobs:
             if [ ! -z "$mysql_pod" ]; then
               kubectl logs $mysql_pod -n kubeflow
             fi
-            kubectl get pvc -n kubeflow
-            kubectl describe pvc katib-mysql -n kubeflow
+            mysql_pod=$(kubectl get pods -n kubeflow | grep katib-mysql | awk '{print $1}')
+            kubectl describe pod $mysql_pod -n kubeflow
             echo Pod Status $(kubectl get pods -n kubeflow | grep "1/1" | wc -l)/$PODNUM
             sleep 10
             TIMEOUT=$((TIMEOUT - 1))
