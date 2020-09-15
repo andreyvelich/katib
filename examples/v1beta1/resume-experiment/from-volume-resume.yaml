@@ -14,8 +14,8 @@ spec:
       - Train-accuracy
   algorithm:
     algorithmName: random
-  parallelTrialCount: 3
-  maxTrialCount: 12
+  parallelTrialCount: 2
+  maxTrialCount: 3
   maxFailedTrialCount: 3
   resumePolicy: FromVolume
   parameters:
@@ -59,7 +59,7 @@ spec:
                 command:
                   - "python3"
                   - "/opt/mxnet-mnist/mnist.py"
-                  - "--batch-size=64"
+                  - "--num-epochs=2"
                   - "--lr=${trialParameters.learningRate}"
                   - "--num-layers=${trialParameters.numberLayers}"
                   - "--optimizer=${trialParameters.optimizer}"

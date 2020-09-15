@@ -61,6 +61,7 @@ jobs:
           kubectl create -f examples/v1beta1/grid-example.yaml
           kubectl create -f examples/v1beta1/metrics-strategy-example.yaml
           kubectl create -f examples/v1beta1/nas/darts-example-cpu.yaml
+          kubectl create -f examples/v1beta1/resume-experiment/from-volume-resume.yaml
 
           controller_pod=$(kubectl get pods -n kubeflow | grep katib-controller | awk '{print $1}')
           TIMEOUT=120
