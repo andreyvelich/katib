@@ -19,8 +19,8 @@ jobs:
         uses: helm/kind-action@v1.0.0-rc.1
         with:
           version: v0.8.1
-          node_image: kindest/node:v1.16.13
-          cluster_name: kind-cluster-v1.16.13
+          node_image: kindest/node:v1.16.15
+          cluster_name: kind-cluster-v1.16.15
           config: src/github.com/kubeflow/katib/kind-cluster.yaml
           kubeconfig: /kubeconfig
 
