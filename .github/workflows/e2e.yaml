@@ -24,6 +24,14 @@ jobs:
           config: src/github.com/kubeflow/katib/kind-cluster.yaml
           kubeconfig: /kubeconfig
 
+      - name: setup env
+        run: |
+          cd src/github.com/kubeflow/katib
+          pwd
+          go env
+          echo "::set-env name=GOPATH::$(go env GOPATH):$GITHUB_WORKSPACE"
+          echo "::add-path::$(go env GOPATH)/bin"
+
       - name: deploy-katib
         run: |
           sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
@@ -47,6 +55,5 @@ jobs:
 
       - name: run-experiment
         run: |
-          GOPATH=$GOPATH:/src/github.com/kubeflow/katib
           cd src/github.com/kubeflow/katib
           go run test/e2e/v1beta1/run-e2e-experiment.go examples/v1beta1/random-example.yaml
