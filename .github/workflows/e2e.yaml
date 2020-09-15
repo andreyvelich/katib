@@ -63,6 +63,7 @@ jobs:
           controller_pod=$(kubectl get pods -n kubeflow | grep katib-controller | awk '{print $1}')
           TIMEOUT=120
           until kubectl get experiment -n kubeflow | grep Succeeded | [[ $(wc -l) -eq 4 ]]; do
+            docker stats --no-stream
             kubectl get pods -n kubeflow
             if [[ $TIMEOUT -eq 0 ]]; then
               echo "NG"
