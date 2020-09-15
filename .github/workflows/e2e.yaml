@@ -1,0 +1,30 @@
+name: E2ETest
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  e2e-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          path: src/github.com/kubeflow/katib
+
+      - name: create kind cluster
+        uses: helm/kind-action@v1.0.0-rc.1
+        with:
+          version: v0.8.1
+          node_image: kindest/node:v1.16.13
+          cluster_name: kind-cluster-v1.16.13
+          config: src/github.com/kubeflow/katib/kind-cluster.yaml
+          kubeconfig: /kubeconfig
+
+      - name: katib-e2e-test
+        run: |
+          kubectl create ns kubeflow
+          kubectl get ns
