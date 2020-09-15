@@ -24,7 +24,19 @@ jobs:
           config: src/github.com/kubeflow/katib/kind-cluster.yaml
           kubeconfig: /kubeconfig
 
-      - name: katib-e2e-test
+      - name: deploy-katib
         run: |
-          kubectl create ns kubeflow
-          kubectl get ns
+          make deploy
+          TIMEOUT=120
+          PODNUM=$(kubectl get deploy -n kubeflow | grep -v NAME | wc -l)
+          until kubectl get pods -n kubeflow | grep Running | [[ $(wc -l) -eq $PODNUM ]]; do
+            echo Pod Status $(kubectl get pods -n kubeflow | grep "1/1" | wc -l)/$PODNUM
+            sleep 10
+            TIMEOUT=$((TIMEOUT - 1))
+            if [[ $TIMEOUT -eq 0 ]]; then
+              echo "NG"
+              kubectl get pods -n kubeflow
+              exit 1
+            fi
+          done
+          kubectl get pods -n kubeflow
