@@ -2,20 +2,14 @@ import math
 import traceback
 import grpc
 import logging
-from logging import getLogger, StreamHandler, DEBUG
 
 from pkg.apis.manager.v1beta1.python import api_pb2
 from pkg.apis.manager.v1beta1.python import api_pb2_grpc
 from pkg.suggestion.v1beta1.hyperband import parsing_util
 from pkg.suggestion.v1beta1.internal.base_health_service import HealthServicer
 
-logger = getLogger(__name__)
-FORMAT = '%(asctime)-15s Experiment %(experiment_name)s %(message)s'
-logging.basicConfig(format=FORMAT)
-handler = StreamHandler()
-handler.setLevel(DEBUG)
-logger.setLevel(DEBUG)
-logger.addHandler(handler)
+logger = logging.getLogger()
+logging.basicConfig(level=logging.INFO)
 
 
 class HyperbandService(api_pb2_grpc.SuggestionServicer, HealthServicer):
@@ -189,7 +183,6 @@ class HyperbandService(api_pb2_grpc.SuggestionServicer, HealthServicer):
         return api_pb2.ValidateAlgorithmSettingsReply()
 
     def ValidateAlgorithmSettings(self, request, context):
-        params = request.experiment.spec.parameter_specs.parameters
         settings = request.experiment.spec.algorithm.algorithm_settings
         setting_dict = {}
         for setting in settings:
@@ -218,10 +211,10 @@ class HyperbandService(api_pb2_grpc.SuggestionServicer, HealthServicer):
                                                     "parallelTrialCount must be not less than %d." % max_parallel)
 
         valid_resourceName = False
-        for param in params:
-            if param.name == setting_dict["resource_name"]:
-                valid_resourceName = True
-                break
+        # for param in params:
+        #     if param.name == setting_dict["resource_name"]:
+        #         valid_resourceName = True
+        #         break
         if not valid_resourceName:
             return self._set_validate_context_error(context,
                                                     "value of resource_name setting must be in parameters.")

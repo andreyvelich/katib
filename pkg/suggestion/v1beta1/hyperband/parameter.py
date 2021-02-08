@@ -1,5 +1,4 @@
 import numpy as np
-from sklearn.preprocessing import MinMaxScaler
 
 
 class ParameterConfig:
@@ -40,12 +39,6 @@ class ParameterConfig:
         self.categorical_info = categorical_info
         if len(self.names) != len(set(self.names)):
             raise Exception("Parameter names are not unique.")
-
-    def create_scaler(self):
-        search_space = np.append(self.lower_bounds, self.upper_bounds, axis=0)
-        scaler = MinMaxScaler()
-        scaler.fit(search_space)
-        return scaler
 
     def random_sample(self):
         new_sample = np.random.uniform(self.lower_bounds, self.upper_bounds,
