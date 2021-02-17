@@ -31,8 +31,8 @@ jobs:
         run: |
           go version
           set -eux
-          images=("katib-ui" "katib-controller" "katib-db-manager")
-          folders=("ui" "katib-controller" "db-manager")
+          images=("katib-controller" "katib-ui" "katib-db-manager")
+          folders=("katib-controller" "ui" "db-manager")
           for idx in {0..2}; do
             docker build . \
                 -t docker.io/kubeflowkatib/${images[$idx]}:latest \
