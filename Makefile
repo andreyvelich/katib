@@ -6,13 +6,13 @@ HAS_LINT := $(shell command -v golint;)
 test:
 	go test ./pkg/... ./cmd/... -coverprofile coverage.out
 
-depend:
-ifndef HAS_DEP
-	curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-endif
-	dep ensure -v
+# depend:
+# ifndef HAS_DEP
+# 	curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+# endif
+# 	dep ensure -v
 
-check: depend generate fmt vet lint
+check: generate fmt vet lint
 
 fmt:
 	hack/verify-gofmt.sh
