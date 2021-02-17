@@ -1,16 +1,9 @@
-HAS_DEP := $(shell command -v dep;)
 HAS_LINT := $(shell command -v golint;)
 
 # Run tests
 .PHONY: test
 test:
 	go test ./pkg/... ./cmd/... -coverprofile coverage.out
-
-# depend:
-# ifndef HAS_DEP
-# 	curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-# endif
-# 	dep ensure -v
 
 check: generate fmt vet lint
 

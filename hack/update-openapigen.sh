@@ -18,12 +18,27 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+echo "Generate open-api for the APIs"
+
 if [[ -z "${GOPATH:-}" ]]; then
   export GOPATH=$(go env GOPATH)
 fi
 
+# Grab code-generator version from go.sum
+CODEGEN_VERSION=$(cd ../../.. && grep 'k8s.io/code-generator' go.sum | awk '{print $2}' | sed 's/\/go.mod//g' | head -1)
+CODEGEN_PKG=$(echo $(go env GOPATH)"/pkg/mod/k8s.io/code-generator@${CODEGEN_VERSION}")
+
+if [[ ! -d ${CODEGEN_PKG} ]]; then
+  echo "${CODEGEN_PKG} is missing. Please run 'go mod download'."
+  exit 0
+fi
+
+echo ">> Using ${CODEGEN_PKG} for the code generator"
+
+# Ensure we can execute.
+chmod +x ${CODEGEN_PKG}/generate-groups.sh
+
 PROJECT_ROOT=${GOPATH}/src/github.com/kubeflow/katib
-CODEGEN_PKG=${PROJECT_ROOT}/vendor/k8s.io/code-generator
 VERSION_LIST=(v1beta1)
 SWAGGER_VERSION="0.1"
 

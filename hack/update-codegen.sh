@@ -18,13 +18,14 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+echo "Generate deepcopy, clientset, listers, informers for the APIs"
+
 if [[ -z "${GOPATH:-}" ]]; then
     export GOPATH=$(go env GOPATH)
 fi
 
 # Grab code-generator version from go.sum
 CODEGEN_VERSION=$(cd ../../.. && grep 'k8s.io/code-generator' go.sum | awk '{print $2}' | sed 's/\/go.mod//g' | head -1)
-echo $CODEGEN_VERSION
 CODEGEN_PKG=$(echo $(go env GOPATH)"/pkg/mod/k8s.io/code-generator@${CODEGEN_VERSION}")
 
 if [[ ! -d ${CODEGEN_PKG} ]]; then

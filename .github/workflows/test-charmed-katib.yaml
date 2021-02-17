@@ -29,7 +29,6 @@ jobs:
 
       - name: Build Docker images
         run: |
-          go version
           set -eux
           images=("katib-controller" "katib-ui" "katib-db-manager")
           folders=("katib-controller" "ui" "db-manager")
@@ -37,8 +36,8 @@ jobs:
             docker build . \
                 -t docker.io/kubeflowkatib/${images[$idx]}:latest \
                 -f cmd/${folders[$idx]}/v1beta1/Dockerfile
-            docker save docker.io/kubeflowkatib/$image > $image.tar
-            microk8s ctr image import $image.tar
+            docker save docker.io/kubeflowkatib/${images[$idx]} > ${images[$idx]}.tar
+            microk8s ctr image import ${images[$idx]}.tar
           done
 
       - name: Deploy Katib
