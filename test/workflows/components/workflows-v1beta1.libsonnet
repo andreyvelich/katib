@@ -363,7 +363,7 @@
                 ],
                 env: prow_env + [{
                   name: "EXTRA_REPOS",
-                  value: "kubeflow/testing@HEAD;kubeflow/manifests@HEAD",
+                  value: "kubeflow/testing@HEAD;kubeflow/manifests@v1.2-branch",
                 }],
                 image: testWorkerImage,
                 volumeMounts: [
@@ -373,7 +373,7 @@
                   },
                 ],
               },
-            }, // checkout
+            }, // checkout test
             $.parts(namespace, name, overrides).e2e(prow_env, bucket).buildTemplate("create-cluster", testWorkerImage, [
               "/usr/local/bin/create-eks-cluster.sh",
             ]),  // Create cluster
