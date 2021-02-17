@@ -31,10 +31,12 @@ jobs:
         run: |
           go version
           set -eux
-          for image in katib-ui katib-controller katib-db-manager; do
+          images=("katib-ui" "katib-controller" "katib-db-manager")
+          folders=("ui" "katib-controller" "db-manager")
+          for idx in {0..2}; do
             docker build . \
-                -t docker.io/kubeflowkatib/$image:latest \
-                -f cmd/$image/v1beta1/Dockerfile
+                -t docker.io/kubeflowkatib/${images[$idx]}:latest \
+                -f cmd/${folders[$idx]}/v1beta1/Dockerfile
             docker save docker.io/kubeflowkatib/$image > $image.tar
             microk8s ctr image import $image.tar
           done
