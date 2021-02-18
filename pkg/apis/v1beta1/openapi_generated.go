@@ -120,7 +120,8 @@ func schema_apis_controller_common_v1beta1_AlgorithmSpec(ref common.ReferenceCal
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.AlgorithmSetting"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.AlgorithmSetting"),
 									},
 								},
 							},
@@ -142,8 +143,9 @@ func schema_apis_controller_common_v1beta1_CollectorSpec(ref common.ReferenceCal
 				Properties: map[string]spec.Schema{
 					"kind": {
 						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
 						},
 					},
 					"customCollector": {
@@ -250,7 +252,8 @@ func schema_apis_controller_common_v1beta1_EarlyStoppingSpec(ref common.Referenc
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.EarlyStoppingSetting"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.EarlyStoppingSetting"),
 									},
 								},
 							},
@@ -301,8 +304,9 @@ func schema_apis_controller_common_v1beta1_FilterSpec(ref common.ReferenceCallba
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -433,8 +437,9 @@ func schema_apis_controller_common_v1beta1_ObjectiveSpec(ref common.ReferenceCal
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -447,7 +452,8 @@ func schema_apis_controller_common_v1beta1_ObjectiveSpec(ref common.ReferenceCal
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.MetricStrategy"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.MetricStrategy"),
 									},
 								},
 							},
@@ -474,7 +480,8 @@ func schema_apis_controller_common_v1beta1_Observation(ref common.ReferenceCallb
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.Metric"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.Metric"),
 									},
 								},
 							},
@@ -602,17 +609,20 @@ func schema_apis_controller_experiments_v1beta1_Experiment(ref common.ReferenceC
 					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
 						},
 					},
 					"spec": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.ExperimentSpec"),
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.ExperimentSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.ExperimentStatus"),
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.ExperimentStatus"),
 						},
 					},
 				},
@@ -633,6 +643,7 @@ func schema_apis_controller_experiments_v1beta1_ExperimentCondition(ref common.R
 					"type": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Type of experiment condition.",
+							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -640,6 +651,7 @@ func schema_apis_controller_experiments_v1beta1_ExperimentCondition(ref common.R
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Status of the condition, one of True, False, Unknown.",
+							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -661,12 +673,14 @@ func schema_apis_controller_experiments_v1beta1_ExperimentCondition(ref common.R
 					"lastUpdateTime": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The last time this condition was updated.",
+							Default:     map[string]interface{}{},
 							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
 						},
 					},
 					"lastTransitionTime": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Last time the condition transitioned from one status to another.",
+							Default:     map[string]interface{}{},
 							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
 						},
 					},
@@ -702,7 +716,8 @@ func schema_apis_controller_experiments_v1beta1_ExperimentList(ref common.Refere
 					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
 						},
 					},
 					"items": {
@@ -711,7 +726,8 @@ func schema_apis_controller_experiments_v1beta1_ExperimentList(ref common.Refere
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.Experiment"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.Experiment"),
 									},
 								},
 							},
@@ -740,7 +756,8 @@ func schema_apis_controller_experiments_v1beta1_ExperimentSpec(ref common.Refere
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.ParameterSpec"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.ParameterSpec"),
 									},
 								},
 							},
@@ -849,7 +866,8 @@ func schema_apis_controller_experiments_v1beta1_ExperimentStatus(ref common.Refe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.ExperimentCondition"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.ExperimentCondition"),
 									},
 								},
 							},
@@ -858,6 +876,7 @@ func schema_apis_controller_experiments_v1beta1_ExperimentStatus(ref common.Refe
 					"currentOptimalTrial": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Current optimal trial parameters and observations.",
+							Default:     map[string]interface{}{},
 							Ref:         ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.OptimalTrial"),
 						},
 					},
@@ -868,8 +887,9 @@ func schema_apis_controller_experiments_v1beta1_ExperimentStatus(ref common.Refe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -882,8 +902,9 @@ func schema_apis_controller_experiments_v1beta1_ExperimentStatus(ref common.Refe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -896,8 +917,9 @@ func schema_apis_controller_experiments_v1beta1_ExperimentStatus(ref common.Refe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -910,8 +932,9 @@ func schema_apis_controller_experiments_v1beta1_ExperimentStatus(ref common.Refe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -924,8 +947,9 @@ func schema_apis_controller_experiments_v1beta1_ExperimentStatus(ref common.Refe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -938,8 +962,9 @@ func schema_apis_controller_experiments_v1beta1_ExperimentStatus(ref common.Refe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -1026,8 +1051,9 @@ func schema_apis_controller_experiments_v1beta1_FeasibleSpace(ref common.Referen
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -1064,8 +1090,9 @@ func schema_apis_controller_experiments_v1beta1_GraphConfig(ref common.Reference
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"integer"},
-										Format: "int32",
+										Default: 0,
+										Type:    []string{"integer"},
+										Format:  "int32",
 									},
 								},
 							},
@@ -1077,8 +1104,9 @@ func schema_apis_controller_experiments_v1beta1_GraphConfig(ref common.Reference
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"integer"},
-										Format: "int32",
+										Default: 0,
+										Type:    []string{"integer"},
+										Format:  "int32",
 									},
 								},
 							},
@@ -1099,7 +1127,8 @@ func schema_apis_controller_experiments_v1beta1_NasConfig(ref common.ReferenceCa
 				Properties: map[string]spec.Schema{
 					"graphConfig": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.GraphConfig"),
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.GraphConfig"),
 						},
 					},
 					"operations": {
@@ -1108,7 +1137,8 @@ func schema_apis_controller_experiments_v1beta1_NasConfig(ref common.ReferenceCa
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.Operation"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.Operation"),
 									},
 								},
 							},
@@ -1141,7 +1171,8 @@ func schema_apis_controller_experiments_v1beta1_Operation(ref common.ReferenceCa
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.ParameterSpec"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.ParameterSpec"),
 									},
 								},
 							},
@@ -1165,6 +1196,7 @@ func schema_apis_controller_experiments_v1beta1_OptimalTrial(ref common.Referenc
 					"bestTrialName": {
 						SchemaProps: spec.SchemaProps{
 							Description: "BestTrialName is the name of the best trial.",
+							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -1176,7 +1208,8 @@ func schema_apis_controller_experiments_v1beta1_OptimalTrial(ref common.Referenc
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.ParameterAssignment"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.ParameterAssignment"),
 									},
 								},
 							},
@@ -1185,6 +1218,7 @@ func schema_apis_controller_experiments_v1beta1_OptimalTrial(ref common.Referenc
 					"observation": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Observation for this trial",
+							Default:     map[string]interface{}{},
 							Ref:         ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.Observation"),
 						},
 					},
@@ -1217,7 +1251,8 @@ func schema_apis_controller_experiments_v1beta1_ParameterSpec(ref common.Referen
 					},
 					"feasibleSpace": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.FeasibleSpace"),
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.FeasibleSpace"),
 						},
 					},
 				},
@@ -1322,7 +1357,8 @@ func schema_apis_controller_experiments_v1beta1_TrialTemplate(ref common.Referen
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.TrialParameterSpec"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/experiments/v1beta1.TrialParameterSpec"),
 									},
 								},
 							},
@@ -1336,8 +1372,9 @@ func schema_apis_controller_experiments_v1beta1_TrialTemplate(ref common.Referen
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -1395,17 +1432,20 @@ func schema_apis_controller_suggestions_v1beta1_Suggestion(ref common.ReferenceC
 					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
 						},
 					},
 					"spec": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/suggestions/v1beta1.SuggestionSpec"),
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/suggestions/v1beta1.SuggestionSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/suggestions/v1beta1.SuggestionStatus"),
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/suggestions/v1beta1.SuggestionStatus"),
 						},
 					},
 				},
@@ -1426,6 +1466,7 @@ func schema_apis_controller_suggestions_v1beta1_SuggestionCondition(ref common.R
 					"type": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Type of Suggestion condition.",
+							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -1433,6 +1474,7 @@ func schema_apis_controller_suggestions_v1beta1_SuggestionCondition(ref common.R
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Status of the condition, one of True, False, Unknown.",
+							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -1454,12 +1496,14 @@ func schema_apis_controller_suggestions_v1beta1_SuggestionCondition(ref common.R
 					"lastUpdateTime": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The last time this condition was updated.",
+							Default:     map[string]interface{}{},
 							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
 						},
 					},
 					"lastTransitionTime": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Last time the condition transitioned from one status to another.",
+							Default:     map[string]interface{}{},
 							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
 						},
 					},
@@ -1495,7 +1539,8 @@ func schema_apis_controller_suggestions_v1beta1_SuggestionList(ref common.Refere
 					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
 						},
 					},
 					"items": {
@@ -1504,7 +1549,8 @@ func schema_apis_controller_suggestions_v1beta1_SuggestionList(ref common.Refere
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/suggestions/v1beta1.Suggestion"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/suggestions/v1beta1.Suggestion"),
 									},
 								},
 							},
@@ -1575,7 +1621,8 @@ func schema_apis_controller_suggestions_v1beta1_SuggestionStatus(ref common.Refe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.AlgorithmSetting"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.AlgorithmSetting"),
 									},
 								},
 							},
@@ -1595,7 +1642,8 @@ func schema_apis_controller_suggestions_v1beta1_SuggestionStatus(ref common.Refe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/suggestions/v1beta1.TrialAssignment"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/suggestions/v1beta1.TrialAssignment"),
 									},
 								},
 							},
@@ -1626,7 +1674,8 @@ func schema_apis_controller_suggestions_v1beta1_SuggestionStatus(ref common.Refe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/suggestions/v1beta1.SuggestionCondition"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/suggestions/v1beta1.SuggestionCondition"),
 									},
 								},
 							},
@@ -1654,7 +1703,8 @@ func schema_apis_controller_suggestions_v1beta1_TrialAssignment(ref common.Refer
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.ParameterAssignment"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.ParameterAssignment"),
 									},
 								},
 							},
@@ -1674,7 +1724,8 @@ func schema_apis_controller_suggestions_v1beta1_TrialAssignment(ref common.Refer
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.EarlyStoppingRule"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.EarlyStoppingRule"),
 									},
 								},
 							},
@@ -1711,17 +1762,20 @@ func schema_apis_controller_trials_v1beta1_Trial(ref common.ReferenceCallback) c
 					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
 						},
 					},
 					"spec": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/trials/v1beta1.TrialSpec"),
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/trials/v1beta1.TrialSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/trials/v1beta1.TrialStatus"),
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/trials/v1beta1.TrialStatus"),
 						},
 					},
 				},
@@ -1742,6 +1796,7 @@ func schema_apis_controller_trials_v1beta1_TrialCondition(ref common.ReferenceCa
 					"type": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Type of trial condition.",
+							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -1749,6 +1804,7 @@ func schema_apis_controller_trials_v1beta1_TrialCondition(ref common.ReferenceCa
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Status of the condition, one of True, False, Unknown.",
+							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -1770,12 +1826,14 @@ func schema_apis_controller_trials_v1beta1_TrialCondition(ref common.ReferenceCa
 					"lastUpdateTime": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The last time this condition was updated.",
+							Default:     map[string]interface{}{},
 							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
 						},
 					},
 					"lastTransitionTime": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Last time the condition transitioned from one status to another.",
+							Default:     map[string]interface{}{},
 							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
 						},
 					},
@@ -1811,7 +1869,8 @@ func schema_apis_controller_trials_v1beta1_TrialList(ref common.ReferenceCallbac
 					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
 						},
 					},
 					"items": {
@@ -1820,7 +1879,8 @@ func schema_apis_controller_trials_v1beta1_TrialList(ref common.ReferenceCallbac
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/trials/v1beta1.Trial"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/trials/v1beta1.Trial"),
 									},
 								},
 							},
@@ -1855,7 +1915,8 @@ func schema_apis_controller_trials_v1beta1_TrialSpec(ref common.ReferenceCallbac
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.ParameterAssignment"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.ParameterAssignment"),
 									},
 								},
 							},
@@ -1868,7 +1929,8 @@ func schema_apis_controller_trials_v1beta1_TrialSpec(ref common.ReferenceCallbac
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.EarlyStoppingRule"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.EarlyStoppingRule"),
 									},
 								},
 							},
@@ -1890,6 +1952,7 @@ func schema_apis_controller_trials_v1beta1_TrialSpec(ref common.ReferenceCallbac
 					"metricsCollector": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Describes how metrics will be collected",
+							Default:     map[string]interface{}{},
 							Ref:         ref("github.com/kubeflow/katib/pkg/apis/controller/common/v1beta1.MetricsCollectorSpec"),
 						},
 					},
@@ -1901,8 +1964,9 @@ func schema_apis_controller_trials_v1beta1_TrialSpec(ref common.ReferenceCallbac
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Type:   []string{"string"},
-										Format: "",
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
 									},
 								},
 							},
@@ -1970,7 +2034,8 @@ func schema_apis_controller_trials_v1beta1_TrialStatus(ref common.ReferenceCallb
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/kubeflow/katib/pkg/apis/controller/trials/v1beta1.TrialCondition"),
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/kubeflow/katib/pkg/apis/controller/trials/v1beta1.TrialCondition"),
 									},
 								},
 							},

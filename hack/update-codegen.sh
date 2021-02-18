@@ -47,7 +47,7 @@ versionStr=$(printf ",%s" "${versions[@]}")
 GROUP_VERSIONS=$(printf "%s:${versionStr:1} " "${modules[@]}")
 
 echo "Generating clients for ${GROUP_VERSIONS} ..."
-${CODEGEN_PKG}/generate-groups.sh \
+${PROJECT_ROOT}/vendor/k8s.io/code-generator/generate-groups.sh \
     all \
     github.com/kubeflow/katib/pkg/client/controller \
     github.com/kubeflow/katib/pkg/apis/controller \

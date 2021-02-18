@@ -4,7 +4,7 @@ FROM golang:alpine AS build-env
 # Copy in the go src
 ADD . /go/src/github.com/kubeflow/katib
 
-RUN go version
+RUN cd /go/src/github.com/kubeflow/katib && go mod download
 
 WORKDIR /go/src/github.com/kubeflow/katib/cmd/katib-controller
 # Build

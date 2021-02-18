@@ -20,12 +20,15 @@
           "type": "string"
         },
         "metadata": {
+          "default": {},
           "$ref": "#/definitions/v1.ObjectMeta"
         },
         "spec": {
+          "default": {},
           "$ref": "#/definitions/.v1beta1.SuggestionSpec"
         },
         "status": {
+          "default": {},
           "$ref": "#/definitions/.v1beta1.SuggestionStatus"
         }
       }
@@ -40,10 +43,12 @@
       "properties": {
         "lastTransitionTime": {
           "description": "Last time the condition transitioned from one status to another.",
+          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "lastUpdateTime": {
           "description": "The last time this condition was updated.",
+          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "message": {
@@ -56,11 +61,13 @@
         },
         "status": {
           "description": "Status of the condition, one of True, False, Unknown.",
-          "type": "string"
+          "type": "string",
+          "default": ""
         },
         "type": {
           "description": "Type of Suggestion condition.",
-          "type": "string"
+          "type": "string",
+          "default": ""
         }
       }
     },
@@ -78,6 +85,7 @@
         "items": {
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/.v1beta1.Suggestion"
           }
         },
@@ -86,6 +94,7 @@
           "type": "string"
         },
         "metadata": {
+          "default": {},
           "$ref": "#/definitions/v1.ListMeta"
         }
       }
@@ -124,6 +133,7 @@
           "description": "AlgorithmSettings defines HP or NAS algorithm settings which suggestion gRPC service returns. These settings overwrites Experiment's settings before the gRPC request. It can be empty if settings haven't been changed.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.AlgorithmSetting"
           }
         },
@@ -135,6 +145,7 @@
           "description": "List of observed runtime conditions for this Suggestion.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/.v1beta1.SuggestionCondition"
           }
         },
@@ -155,6 +166,7 @@
           "description": "Suggestion results",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/.v1beta1.TrialAssignment"
           }
         }
@@ -173,12 +185,15 @@
           "type": "string"
         },
         "metadata": {
+          "default": {},
           "$ref": "#/definitions/v1.ObjectMeta"
         },
         "spec": {
+          "default": {},
           "$ref": "#/definitions/.v1beta1.TrialSpec"
         },
         "status": {
+          "default": {},
           "$ref": "#/definitions/.v1beta1.TrialStatus"
         }
       }
@@ -191,6 +206,7 @@
           "description": "Rules for early stopping techniques Contains rule name, value and comparison type",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.EarlyStoppingRule"
           }
         },
@@ -202,6 +218,7 @@
           "description": "Suggestion results with Trial parameters",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.ParameterAssignment"
           }
         }
@@ -217,10 +234,12 @@
       "properties": {
         "lastTransitionTime": {
           "description": "Last time the condition transitioned from one status to another.",
+          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "lastUpdateTime": {
           "description": "The last time this condition was updated.",
+          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "message": {
@@ -233,11 +252,13 @@
         },
         "status": {
           "description": "Status of the condition, one of True, False, Unknown.",
-          "type": "string"
+          "type": "string",
+          "default": ""
         },
         "type": {
           "description": "Type of trial condition.",
-          "type": "string"
+          "type": "string",
+          "default": ""
         }
       }
     },
@@ -255,6 +276,7 @@
         "items": {
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/.v1beta1.Trial"
           }
         },
@@ -263,6 +285,7 @@
           "type": "string"
         },
         "metadata": {
+          "default": {},
           "$ref": "#/definitions/v1.ListMeta"
         }
       }
@@ -278,6 +301,7 @@
           "description": "Rules for early stopping techniques. Each rule should be met to early stop Trial.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.EarlyStoppingRule"
           }
         },
@@ -287,6 +311,7 @@
         },
         "metricsCollector": {
           "description": "Describes how metrics will be collected",
+          "default": {},
           "$ref": "#/definitions/v1beta1.MetricsCollectorSpec"
         },
         "objective": {
@@ -297,6 +322,7 @@
           "description": "Key-value pairs for hyperparameters and assignment values.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.ParameterAssignment"
           }
         },
@@ -308,7 +334,8 @@
           "description": "Label that determines if pod needs to be injected by Katib sidecar container",
           "type": "object",
           "additionalProperties": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "retainRun": {
@@ -337,6 +364,7 @@
           "description": "List of observed runtime conditions for this Trial.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/.v1beta1.TrialCondition"
           }
         },
@@ -380,6 +408,7 @@
           "description": "Key-value pairs representing settings for suggestion algorithms.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.AlgorithmSetting"
           }
         }
@@ -396,7 +425,8 @@
           "$ref": "#/definitions/v1.Container"
         },
         "kind": {
-          "type": "string"
+          "type": "string",
+          "default": ""
         }
       }
     },
@@ -467,6 +497,7 @@
           "description": "Key-value pairs representing settings for early stopping algorithm.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.EarlyStoppingSetting"
           }
         }
@@ -485,12 +516,15 @@
           "type": "string"
         },
         "metadata": {
+          "default": {},
           "$ref": "#/definitions/v1.ObjectMeta"
         },
         "spec": {
+          "default": {},
           "$ref": "#/definitions/v1beta1.ExperimentSpec"
         },
         "status": {
+          "default": {},
           "$ref": "#/definitions/v1beta1.ExperimentStatus"
         }
       }
@@ -505,10 +539,12 @@
       "properties": {
         "lastTransitionTime": {
           "description": "Last time the condition transitioned from one status to another.",
+          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "lastUpdateTime": {
           "description": "The last time this condition was updated.",
+          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "message": {
@@ -521,11 +557,13 @@
         },
         "status": {
           "description": "Status of the condition, one of True, False, Unknown.",
-          "type": "string"
+          "type": "string",
+          "default": ""
         },
         "type": {
           "description": "Type of experiment condition.",
-          "type": "string"
+          "type": "string",
+          "default": ""
         }
       }
     },
@@ -543,6 +581,7 @@
         "items": {
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.Experiment"
           }
         },
@@ -551,6 +590,7 @@
           "type": "string"
         },
         "metadata": {
+          "default": {},
           "$ref": "#/definitions/v1.ListMeta"
         }
       }
@@ -597,6 +637,7 @@
           "description": "List of hyperparameter configurations.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.ParameterSpec"
           }
         },
@@ -622,32 +663,37 @@
           "description": "List of observed runtime conditions for this Experiment.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.ExperimentCondition"
           }
         },
         "currentOptimalTrial": {
           "description": "Current optimal trial parameters and observations.",
+          "default": {},
           "$ref": "#/definitions/v1beta1.OptimalTrial"
         },
         "earlyStoppedTrialList": {
           "description": "List of trial names which have been early stopped.",
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "failedTrialList": {
           "description": "List of trial names which have already failed.",
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "killedTrialList": {
           "description": "List of trial names which have been killed.",
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "lastReconcileTime": {
@@ -658,14 +704,16 @@
           "description": "List of trial names which are pending.",
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "runningTrialList": {
           "description": "List of trial names which are running.",
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "startTime": {
@@ -676,7 +724,8 @@
           "description": "List of trial names which have already succeeded.",
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "trials": {
@@ -722,7 +771,8 @@
         "list": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "max": {
@@ -754,7 +804,8 @@
           "description": "When the metrics output follows format as this field specified, metricsCollector collects it and reports to metrics server, it can be \"\u003cmetric_name\u003e: \u003cfloat\u003e\" or else",
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         }
       }
@@ -767,7 +818,8 @@
           "type": "array",
           "items": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 0
           }
         },
         "numLayers": {
@@ -778,7 +830,8 @@
           "type": "array",
           "items": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": 0
           }
         }
       }
@@ -827,11 +880,13 @@
       "type": "object",
       "properties": {
         "graphConfig": {
+          "default": {},
           "$ref": "#/definitions/v1beta1.GraphConfig"
         },
         "operations": {
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.Operation"
           }
         }
@@ -845,7 +900,8 @@
           "description": "AdditionalMetricNames represents metrics that should be collected from Trials. This can be empty if we only care about the objective metric. Note: If we adopt a push instead of pull mechanism, this can be omitted completely.",
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "goal": {
@@ -857,6 +913,7 @@
           "description": "MetricStrategies defines various rules (min, max or latest) to extract metrics values. This field is allowed to missing, experiment defaulter (webhook) will fill it.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.MetricStrategy"
           }
         },
@@ -880,6 +937,7 @@
           "description": "Key-value pairs for metric names and values",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.Metric"
           }
         }
@@ -895,6 +953,7 @@
         "parameters": {
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.ParameterSpec"
           }
         }
@@ -910,16 +969,19 @@
       "properties": {
         "bestTrialName": {
           "description": "BestTrialName is the name of the best trial.",
-          "type": "string"
+          "type": "string",
+          "default": ""
         },
         "observation": {
           "description": "Observation for this trial",
+          "default": {},
           "$ref": "#/definitions/v1beta1.Observation"
         },
         "parameterAssignments": {
           "description": "Key-value pairs for hyperparameters and assignment values.",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.ParameterAssignment"
           }
         }
@@ -940,6 +1002,7 @@
       "type": "object",
       "properties": {
         "feasibleSpace": {
+          "default": {},
           "$ref": "#/definitions/v1beta1.FeasibleSpace"
         },
         "name": {
@@ -1019,7 +1082,8 @@
           "description": "Labels that determines if pod needs to be injected by Katib sidecar container. If PrimaryPodLabels is omitted, metrics collector wraps all Trial's pods.",
           "type": "object",
           "additionalProperties": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "retain": {
@@ -1034,6 +1098,7 @@
           "description": "List of parameters that are used in trial template",
           "type": "array",
           "items": {
+            "default": {},
             "$ref": "#/definitions/v1beta1.TrialParameterSpec"
           }
         },

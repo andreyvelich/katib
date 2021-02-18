@@ -373,7 +373,7 @@
                   },
                 ],
               },
-            }, // checkout test
+            }, // checkout
             $.parts(namespace, name, overrides).e2e(prow_env, bucket).buildTemplate("create-cluster", testWorkerImage, [
               "/usr/local/bin/create-eks-cluster.sh",
             ]),  // Create cluster
