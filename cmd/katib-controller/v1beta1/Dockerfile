@@ -4,8 +4,6 @@ FROM golang:alpine AS build-env
 # Copy in the go src
 ADD . /go/src/github.com/kubeflow/katib
 
-RUN cd /go/src/github.com/kubeflow/katib && go mod download
-
 WORKDIR /go/src/github.com/kubeflow/katib/cmd/katib-controller
 # Build
 RUN if [ "$(uname -m)" = "ppc64le" ]; then \

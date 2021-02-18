@@ -41,7 +41,7 @@ endif
 	hack/gen-python-sdk/gen-sdk.sh
 
 # Build images for Katib v1beta1 components
-build: depend generate
+build: generate
 ifeq ($(and $(REGISTRY),$(TAG)),)
 	$(error REGISTRY and TAG must be set. Usage make build REGISTRY=<registry> TAG=<TAG>)
 endif
