@@ -9,7 +9,6 @@
   "definitions": {
     ".v1beta1.Suggestion": {
       "description": "Suggestion represents the structure of a Suggestion resource.",
-      "type": "object",
       "properties": {
         "apiVersion": {
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
@@ -20,22 +19,18 @@
           "type": "string"
         },
         "metadata": {
-          "default": {},
           "$ref": "#/definitions/v1.ObjectMeta"
         },
         "spec": {
-          "default": {},
           "$ref": "#/definitions/.v1beta1.SuggestionSpec"
         },
         "status": {
-          "default": {},
           "$ref": "#/definitions/.v1beta1.SuggestionStatus"
         }
       }
     },
     ".v1beta1.SuggestionCondition": {
       "description": "SuggestionCondition describes the state of the Suggestion at a certain point.",
-      "type": "object",
       "required": [
         "type",
         "status"
@@ -43,12 +38,10 @@
       "properties": {
         "lastTransitionTime": {
           "description": "Last time the condition transitioned from one status to another.",
-          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "lastUpdateTime": {
           "description": "The last time this condition was updated.",
-          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "message": {
@@ -61,19 +54,16 @@
         },
         "status": {
           "description": "Status of the condition, one of True, False, Unknown.",
-          "type": "string",
-          "default": ""
+          "type": "string"
         },
         "type": {
           "description": "Type of Suggestion condition.",
-          "type": "string",
-          "default": ""
+          "type": "string"
         }
       }
     },
     ".v1beta1.SuggestionList": {
       "description": "SuggestionList contains a list of Suggestion",
-      "type": "object",
       "required": [
         "items"
       ],
@@ -85,7 +75,6 @@
         "items": {
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/.v1beta1.Suggestion"
           }
         },
@@ -94,14 +83,12 @@
           "type": "string"
         },
         "metadata": {
-          "default": {},
           "$ref": "#/definitions/v1.ListMeta"
         }
       }
     },
     ".v1beta1.SuggestionSpec": {
       "description": "SuggestionSpec is the specification of a Suggestion.",
-      "type": "object",
       "required": [
         "algorithm"
       ],
@@ -127,13 +114,11 @@
     },
     ".v1beta1.SuggestionStatus": {
       "description": "SuggestionStatus is the current status of a Suggestion.",
-      "type": "object",
       "properties": {
         "algorithmSettings": {
           "description": "AlgorithmSettings defines HP or NAS algorithm settings which suggestion gRPC service returns. These settings overwrites Experiment's settings before the gRPC request. It can be empty if settings haven't been changed.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.AlgorithmSetting"
           }
         },
@@ -145,7 +130,6 @@
           "description": "List of observed runtime conditions for this Suggestion.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/.v1beta1.SuggestionCondition"
           }
         },
@@ -166,7 +150,6 @@
           "description": "Suggestion results",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/.v1beta1.TrialAssignment"
           }
         }
@@ -174,7 +157,6 @@
     },
     ".v1beta1.Trial": {
       "description": "Represents the structure of a Trial resource.",
-      "type": "object",
       "properties": {
         "apiVersion": {
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
@@ -185,28 +167,23 @@
           "type": "string"
         },
         "metadata": {
-          "default": {},
           "$ref": "#/definitions/v1.ObjectMeta"
         },
         "spec": {
-          "default": {},
           "$ref": "#/definitions/.v1beta1.TrialSpec"
         },
         "status": {
-          "default": {},
           "$ref": "#/definitions/.v1beta1.TrialStatus"
         }
       }
     },
     ".v1beta1.TrialAssignment": {
       "description": "TrialAssignment is the assignment for one trial.",
-      "type": "object",
       "properties": {
         "earlyStoppingRules": {
           "description": "Rules for early stopping techniques Contains rule name, value and comparison type",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.EarlyStoppingRule"
           }
         },
@@ -218,7 +195,6 @@
           "description": "Suggestion results with Trial parameters",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.ParameterAssignment"
           }
         }
@@ -226,7 +202,6 @@
     },
     ".v1beta1.TrialCondition": {
       "description": "TrialCondition describes the state of the trial at a certain point.",
-      "type": "object",
       "required": [
         "type",
         "status"
@@ -234,12 +209,10 @@
       "properties": {
         "lastTransitionTime": {
           "description": "Last time the condition transitioned from one status to another.",
-          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "lastUpdateTime": {
           "description": "The last time this condition was updated.",
-          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "message": {
@@ -252,19 +225,16 @@
         },
         "status": {
           "description": "Status of the condition, one of True, False, Unknown.",
-          "type": "string",
-          "default": ""
+          "type": "string"
         },
         "type": {
           "description": "Type of trial condition.",
-          "type": "string",
-          "default": ""
+          "type": "string"
         }
       }
     },
     ".v1beta1.TrialList": {
       "description": "TrialList contains a list of Trials",
-      "type": "object",
       "required": [
         "items"
       ],
@@ -276,7 +246,6 @@
         "items": {
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/.v1beta1.Trial"
           }
         },
@@ -285,14 +254,12 @@
           "type": "string"
         },
         "metadata": {
-          "default": {},
           "$ref": "#/definitions/v1.ListMeta"
         }
       }
     },
     ".v1beta1.TrialSpec": {
       "description": "TrialSpec is the specification of a Trial.",
-      "type": "object",
       "required": [
         "parameterAssignments"
       ],
@@ -301,7 +268,6 @@
           "description": "Rules for early stopping techniques. Each rule should be met to early stop Trial.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.EarlyStoppingRule"
           }
         },
@@ -311,7 +277,6 @@
         },
         "metricsCollector": {
           "description": "Describes how metrics will be collected",
-          "default": {},
           "$ref": "#/definitions/v1beta1.MetricsCollectorSpec"
         },
         "objective": {
@@ -322,7 +287,6 @@
           "description": "Key-value pairs for hyperparameters and assignment values.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.ParameterAssignment"
           }
         },
@@ -334,8 +298,7 @@
           "description": "Label that determines if pod needs to be injected by Katib sidecar container",
           "type": "object",
           "additionalProperties": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "retainRun": {
@@ -354,7 +317,6 @@
     },
     ".v1beta1.TrialStatus": {
       "description": "TrialStatus is the current status of a Trial.",
-      "type": "object",
       "properties": {
         "completionTime": {
           "description": "Represents time when the Trial was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC",
@@ -364,7 +326,6 @@
           "description": "List of observed runtime conditions for this Trial.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/.v1beta1.TrialCondition"
           }
         },
@@ -384,7 +345,6 @@
     },
     "v1beta1.AlgorithmSetting": {
       "description": "AlgorithmSetting represents key-value pair for HP or NAS algorithm settings.",
-      "type": "object",
       "properties": {
         "name": {
           "description": "Name is setting name.",
@@ -398,7 +358,6 @@
     },
     "v1beta1.AlgorithmSpec": {
       "description": "AlgorithmSpec is the specification for a HP or NAS algorithm.",
-      "type": "object",
       "properties": {
         "algorithmName": {
           "description": "HP or NAS algorithm name.",
@@ -408,14 +367,12 @@
           "description": "Key-value pairs representing settings for suggestion algorithms.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.AlgorithmSetting"
           }
         }
       }
     },
     "v1beta1.CollectorSpec": {
-      "type": "object",
       "required": [
         "kind"
       ],
@@ -425,14 +382,12 @@
           "$ref": "#/definitions/v1.Container"
         },
         "kind": {
-          "type": "string",
-          "default": ""
+          "type": "string"
         }
       }
     },
     "v1beta1.ConfigMapSource": {
       "description": "ConfigMapSource references the config map where trial template is located",
-      "type": "object",
       "properties": {
         "configMapName": {
           "description": "Name of config map where trial template is located",
@@ -450,7 +405,6 @@
     },
     "v1beta1.EarlyStoppingRule": {
       "description": "EarlyStoppingRule represents each rule for early stopping.",
-      "type": "object",
       "properties": {
         "comparison": {
           "description": "Comparison defines correlation between name and value.",
@@ -473,7 +427,6 @@
     },
     "v1beta1.EarlyStoppingSetting": {
       "description": "EarlyStoppingSetting represents key-value pair for early stopping algorithm settings.",
-      "type": "object",
       "properties": {
         "name": {
           "description": "Name is the setting name.",
@@ -487,7 +440,6 @@
     },
     "v1beta1.EarlyStoppingSpec": {
       "description": "EarlyStoppingSpec is the specification for a early stopping algorithm.",
-      "type": "object",
       "properties": {
         "algorithmName": {
           "description": "Early stopping algorithm name.",
@@ -497,7 +449,6 @@
           "description": "Key-value pairs representing settings for early stopping algorithm.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.EarlyStoppingSetting"
           }
         }
@@ -505,7 +456,6 @@
     },
     "v1beta1.Experiment": {
       "description": "Structure of the Experiment custom resource.",
-      "type": "object",
       "properties": {
         "apiVersion": {
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
@@ -516,22 +466,18 @@
           "type": "string"
         },
         "metadata": {
-          "default": {},
           "$ref": "#/definitions/v1.ObjectMeta"
         },
         "spec": {
-          "default": {},
           "$ref": "#/definitions/v1beta1.ExperimentSpec"
         },
         "status": {
-          "default": {},
           "$ref": "#/definitions/v1beta1.ExperimentStatus"
         }
       }
     },
     "v1beta1.ExperimentCondition": {
       "description": "ExperimentCondition describes the state of the experiment at a certain point.",
-      "type": "object",
       "required": [
         "type",
         "status"
@@ -539,12 +485,10 @@
       "properties": {
         "lastTransitionTime": {
           "description": "Last time the condition transitioned from one status to another.",
-          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "lastUpdateTime": {
           "description": "The last time this condition was updated.",
-          "default": {},
           "$ref": "#/definitions/v1.Time"
         },
         "message": {
@@ -557,19 +501,16 @@
         },
         "status": {
           "description": "Status of the condition, one of True, False, Unknown.",
-          "type": "string",
-          "default": ""
+          "type": "string"
         },
         "type": {
           "description": "Type of experiment condition.",
-          "type": "string",
-          "default": ""
+          "type": "string"
         }
       }
     },
     "v1beta1.ExperimentList": {
       "description": "ExperimentList contains a list of Experiments",
-      "type": "object",
       "required": [
         "items"
       ],
@@ -581,7 +522,6 @@
         "items": {
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.Experiment"
           }
         },
@@ -590,14 +530,12 @@
           "type": "string"
         },
         "metadata": {
-          "default": {},
           "$ref": "#/definitions/v1.ListMeta"
         }
       }
     },
     "v1beta1.ExperimentSpec": {
       "description": "ExperimentSpec is the specification of an Experiment.",
-      "type": "object",
       "properties": {
         "algorithm": {
           "description": "Describes the suggestion algorithm.",
@@ -637,7 +575,6 @@
           "description": "List of hyperparameter configurations.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.ParameterSpec"
           }
         },
@@ -653,7 +590,6 @@
     },
     "v1beta1.ExperimentStatus": {
       "description": "ExperimentStatus is the current status of an Experiment.",
-      "type": "object",
       "properties": {
         "completionTime": {
           "description": "Represents time when the Experiment was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC.",
@@ -663,37 +599,32 @@
           "description": "List of observed runtime conditions for this Experiment.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.ExperimentCondition"
           }
         },
         "currentOptimalTrial": {
           "description": "Current optimal trial parameters and observations.",
-          "default": {},
           "$ref": "#/definitions/v1beta1.OptimalTrial"
         },
         "earlyStoppedTrialList": {
           "description": "List of trial names which have been early stopped.",
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "failedTrialList": {
           "description": "List of trial names which have already failed.",
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "killedTrialList": {
           "description": "List of trial names which have been killed.",
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "lastReconcileTime": {
@@ -704,16 +635,14 @@
           "description": "List of trial names which are pending.",
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "runningTrialList": {
           "description": "List of trial names which are running.",
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "startTime": {
@@ -724,8 +653,7 @@
           "description": "List of trial names which have already succeeded.",
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "trials": {
@@ -766,13 +694,11 @@
       }
     },
     "v1beta1.FeasibleSpace": {
-      "type": "object",
       "properties": {
         "list": {
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "max": {
@@ -787,7 +713,6 @@
       }
     },
     "v1beta1.FileSystemPath": {
-      "type": "object",
       "properties": {
         "kind": {
           "type": "string"
@@ -798,28 +723,24 @@
       }
     },
     "v1beta1.FilterSpec": {
-      "type": "object",
       "properties": {
         "metricsFormat": {
           "description": "When the metrics output follows format as this field specified, metricsCollector collects it and reports to metrics server, it can be \"\u003cmetric_name\u003e: \u003cfloat\u003e\" or else",
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         }
       }
     },
     "v1beta1.GraphConfig": {
       "description": "GraphConfig contains a config of DAG",
-      "type": "object",
       "properties": {
         "inputSizes": {
           "type": "array",
           "items": {
             "type": "integer",
-            "format": "int32",
-            "default": 0
+            "format": "int32"
           }
         },
         "numLayers": {
@@ -830,14 +751,12 @@
           "type": "array",
           "items": {
             "type": "integer",
-            "format": "int32",
-            "default": 0
+            "format": "int32"
           }
         }
       }
     },
     "v1beta1.Metric": {
-      "type": "object",
       "properties": {
         "latest": {
           "type": "string"
@@ -854,7 +773,6 @@
       }
     },
     "v1beta1.MetricStrategy": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -865,7 +783,6 @@
       }
     },
     "v1beta1.MetricsCollectorSpec": {
-      "type": "object",
       "properties": {
         "collector": {
           "$ref": "#/definitions/v1beta1.CollectorSpec"
@@ -877,16 +794,13 @@
     },
     "v1beta1.NasConfig": {
       "description": "NasConfig contains config for NAS job",
-      "type": "object",
       "properties": {
         "graphConfig": {
-          "default": {},
           "$ref": "#/definitions/v1beta1.GraphConfig"
         },
         "operations": {
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.Operation"
           }
         }
@@ -894,14 +808,12 @@
     },
     "v1beta1.ObjectiveSpec": {
       "description": "ObjectiveSpec represents Experiment's objective specification.",
-      "type": "object",
       "properties": {
         "additionalMetricNames": {
           "description": "AdditionalMetricNames represents metrics that should be collected from Trials. This can be empty if we only care about the objective metric. Note: If we adopt a push instead of pull mechanism, this can be omitted completely.",
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "goal": {
@@ -913,7 +825,6 @@
           "description": "MetricStrategies defines various rules (min, max or latest) to extract metrics values. This field is allowed to missing, experiment defaulter (webhook) will fill it.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.MetricStrategy"
           }
         },
@@ -928,7 +839,6 @@
       }
     },
     "v1beta1.Observation": {
-      "type": "object",
       "required": [
         "metrics"
       ],
@@ -937,7 +847,6 @@
           "description": "Key-value pairs for metric names and values",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.Metric"
           }
         }
@@ -945,7 +854,6 @@
     },
     "v1beta1.Operation": {
       "description": "Operation contains type of operation in DAG",
-      "type": "object",
       "properties": {
         "operationType": {
           "type": "string"
@@ -953,7 +861,6 @@
         "parameters": {
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.ParameterSpec"
           }
         }
@@ -961,7 +868,6 @@
     },
     "v1beta1.OptimalTrial": {
       "description": "OptimalTrial is the metrics and assignments of the best trial.",
-      "type": "object",
       "required": [
         "bestTrialName",
         "parameterAssignments"
@@ -969,26 +875,22 @@
       "properties": {
         "bestTrialName": {
           "description": "BestTrialName is the name of the best trial.",
-          "type": "string",
-          "default": ""
+          "type": "string"
         },
         "observation": {
           "description": "Observation for this trial",
-          "default": {},
           "$ref": "#/definitions/v1beta1.Observation"
         },
         "parameterAssignments": {
           "description": "Key-value pairs for hyperparameters and assignment values.",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.ParameterAssignment"
           }
         }
       }
     },
     "v1beta1.ParameterAssignment": {
-      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -999,10 +901,8 @@
       }
     },
     "v1beta1.ParameterSpec": {
-      "type": "object",
       "properties": {
         "feasibleSpace": {
-          "default": {},
           "$ref": "#/definitions/v1beta1.FeasibleSpace"
         },
         "name": {
@@ -1014,7 +914,6 @@
       }
     },
     "v1beta1.SourceSpec": {
-      "type": "object",
       "properties": {
         "fileSystemPath": {
           "description": "During training model, metrics may be persisted into local file in source code, such as tfEvent use case",
@@ -1032,7 +931,6 @@
     },
     "v1beta1.TrialParameterSpec": {
       "description": "TrialParameterSpec describes parameters that must be replaced in trial template",
-      "type": "object",
       "properties": {
         "description": {
           "description": "Description of the parameter",
@@ -1050,7 +948,6 @@
     },
     "v1beta1.TrialSource": {
       "description": "TrialSource represent the source for trial template Only one source can be specified",
-      "type": "object",
       "properties": {
         "configMap": {
           "description": "ConfigMap spec represents a reference to ConfigMap",
@@ -1064,7 +961,6 @@
     },
     "v1beta1.TrialTemplate": {
       "description": "TrialTemplate describes structure of trial template",
-      "type": "object",
       "properties": {
         "configMap": {
           "description": "ConfigMap spec represents a reference to ConfigMap",
@@ -1082,8 +978,7 @@
           "description": "Labels that determines if pod needs to be injected by Katib sidecar container. If PrimaryPodLabels is omitted, metrics collector wraps all Trial's pods.",
           "type": "object",
           "additionalProperties": {
-            "type": "string",
-            "default": ""
+            "type": "string"
           }
         },
         "retain": {
@@ -1098,7 +993,6 @@
           "description": "List of parameters that are used in trial template",
           "type": "array",
           "items": {
-            "default": {},
             "$ref": "#/definitions/v1beta1.TrialParameterSpec"
           }
         },

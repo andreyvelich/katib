@@ -38,7 +38,7 @@ ifndef GOPATH
 	$(error GOPATH not defined, please define GOPATH. Run "go help gopath" to learn more about GOPATH)
 endif
 	go generate ./pkg/... ./cmd/...
-	# hack/gen-python-sdk/gen-sdk.sh
+	hack/gen-python-sdk/gen-sdk.sh
 
 # Build images for Katib v1beta1 components
 build: depend generate

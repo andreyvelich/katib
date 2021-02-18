@@ -24,6 +24,10 @@ if [[ -z "${GOPATH:-}" ]]; then
     export GOPATH=$(go env GOPATH)
 fi
 
+# TODO (andreyvelich): Temporarily solution to fix "go install: no install location for directory" error
+# We should update the Kubernetes dependencies with controller-runtime to remove this
+export GOBIN=$GOPATH/bin
+
 # Grab code-generator version from go.sum
 CODEGEN_VERSION=$(cd ../../.. && grep 'k8s.io/code-generator' go.sum | awk '{print $2}' | sed 's/\/go.mod//g' | head -1)
 CODEGEN_PKG=$(echo $(go env GOPATH)"/pkg/mod/k8s.io/code-generator@${CODEGEN_VERSION}")
@@ -47,7 +51,7 @@ versionStr=$(printf ",%s" "${versions[@]}")
 GROUP_VERSIONS=$(printf "%s:${versionStr:1} " "${modules[@]}")
 
 echo "Generating clients for ${GROUP_VERSIONS} ..."
-${PROJECT_ROOT}/vendor/k8s.io/code-generator/generate-groups.sh \
+${CODEGEN_PKG}/generate-groups.sh \
     all \
     github.com/kubeflow/katib/pkg/client/controller \
     github.com/kubeflow/katib/pkg/apis/controller \
