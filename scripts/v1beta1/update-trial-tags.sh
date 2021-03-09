@@ -42,4 +42,23 @@ fi
 echo "Updating Trial template images..."
 echo "Image tag: ${TAG}"
 
-find . -regex ".*\.yaml" -exec sed -i -e "s@docker.io/kubeflowkatib\/pytorch-mnist:.*@docker.io/kubeflowkatib\/pytorch-mnist:new-version@" {} \;
+IMAGE_MXNET_MNIST="docker.io/kubeflowkatib\/mxnet-mnist"
+IMAGE_PYTORCH_MNIST="docker.io/kubeflowkatib/pytorch-mnist"
+IMAGE_ENAS_GPU="docker.io/kubeflowkatib/enas-cnn-cifar10-gpu"
+IMAGE_ENAS_CPU="docker.io/kubeflowkatib/enas-cnn-cifar10-cpu"
+IMAGE_DARTS="docker.io/kubeflowkatib/darts-cnn-cifar10"
+
+# MXNet mnist.
+find ./examples -regex ".*\.yaml" -exec sed -i -e "s@${IMAGE_MXNET_MNIST}:.*@${IMAGE_MXNET_MNIST}:${TAG}@" {} \;
+
+# PyTorch mnist.
+find ./examples -regex ".*\.yaml" -exec sed -i -e "s@${IMAGE_PYTORCH_MNIST}:.*@${IMAGE_PYTORCH_MNIST}:${TAG}@" {} \;
+
+# ENAS cifar-10 GPU.
+find ./examples -regex ".*\.yaml" -exec sed -i -e "s@${IMAGE_ENAS_GPU}:.*@${IMAGE_ENAS_GPU}:${TAG}@" {} \;
+
+# ENAS cifar-10 CPU.
+find ./examples -regex ".*\.yaml" -exec sed -i -e "s@${IMAGE_ENAS_CPU}:.*@${IMAGE_ENAS_CPU}:${TAG}@" {} \;
+
+# DARTS cifar-10.
+find ./examples -regex ".*\.yaml" -exec sed -i -e "s@${IMAGE_DARTS}:.*@${IMAGE_DARTS}:${TAG}@" {} \;
