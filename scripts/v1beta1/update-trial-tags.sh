@@ -62,3 +62,5 @@ find ./examples -regex ".*\.yaml" -exec sed -i -e "s@${IMAGE_ENAS_CPU}:.*@${IMAG
 
 # DARTS cifar-10.
 find ./examples -regex ".*\.yaml" -exec sed -i -e "s@${IMAGE_DARTS}:.*@${IMAGE_DARTS}:${TAG}@" {} \;
+
+echo "Trial template images has been updated"
