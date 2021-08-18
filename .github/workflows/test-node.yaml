@@ -20,7 +20,5 @@ jobs:
 
       - name: Run Node test
         run: |
-          cd ./pkg/new-ui/v1beta1/frontend
-          npm install prettier
-          cd ../../../..
+          npm install prettier --prefix ./pkg/new-ui/v1beta1/frontend
           make prettier-check
