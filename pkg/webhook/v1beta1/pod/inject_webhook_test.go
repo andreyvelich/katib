@@ -45,7 +45,6 @@ import (
 	trialsv1beta1 "github.com/kubeflow/katib/pkg/apis/controller/trials/v1beta1"
 	"github.com/kubeflow/katib/pkg/controller.v1beta1/consts"
 	"github.com/kubeflow/katib/pkg/controller.v1beta1/util"
-	mccommon "github.com/kubeflow/katib/pkg/metricscollector/v1beta1/common"
 	"github.com/kubeflow/katib/pkg/util/v1beta1/katibconfig"
 )
 
@@ -628,28 +627,28 @@ func TestMutateVolume(t *testing.T) {
 	}
 }
 
-func TestGetSidecarContainerName(t *testing.T) {
-	testCases := []struct {
-		CollectorKind         common.CollectorKind
-		ExpectedCollectorKind string
-	}{
-		{
-			CollectorKind:         common.StdOutCollector,
-			ExpectedCollectorKind: mccommon.MetricLoggerCollectorContainerName,
-		},
-		{
-			CollectorKind:         common.TfEventCollector,
-			ExpectedCollectorKind: mccommon.MetricCollectorContainerName,
-		},
-	}
+// func TestGetSidecarContainerName(t *testing.T) {
+// 	testCases := []struct {
+// 		CollectorKind         common.CollectorKind
+// 		ExpectedCollectorKind string
+// 	}{
+// 		{
+// 			CollectorKind:         common.StdOutCollector,
+// 			ExpectedCollectorKind: mccommon.MetricLoggerCollectorContainerName,
+// 		},
+// 		{
+// 			CollectorKind:         common.TfEventCollector,
+// 			ExpectedCollectorKind: mccommon.MetricCollectorContainerName,
+// 		},
+// 	}
 
-	for _, tc := range testCases {
-		collectorKind := getSidecarContainerName(tc.CollectorKind)
-		if collectorKind != tc.ExpectedCollectorKind {
-			t.Errorf("Expected Collector Kind: %v, got %v", tc.ExpectedCollectorKind, collectorKind)
-		}
-	}
-}
+// 	for _, tc := range testCases {
+// 		collectorKind := getSidecarContainerName(tc.CollectorKind)
+// 		if collectorKind != tc.ExpectedCollectorKind {
+// 			t.Errorf("Expected Collector Kind: %v, got %v", tc.ExpectedCollectorKind, collectorKind)
+// 		}
+// 	}
+// }
 
 func TestGetKatibJob(t *testing.T) {
 	// Start test k8s server
